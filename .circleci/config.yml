@@ -9,9 +9,14 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: install npm dependencies
             - run: npm install
             - run: npm i playwright
             - run: npm test
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
 workflows:
     build-and-test:
       jobs:
