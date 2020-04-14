@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm i playwright
-            - run: npm StribTest.js
+            - run: npm test
       - store_test_results:
           path: test-results
       - store_artifacts:
