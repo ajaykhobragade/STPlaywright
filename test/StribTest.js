@@ -38,7 +38,7 @@ const playwright = require('playwright');
     //#endregion
 
     //#region close browser
-    //await browser.close();
+    await browser.close();
     //#endregion
     
 })();
