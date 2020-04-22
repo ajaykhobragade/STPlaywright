@@ -2,25 +2,24 @@ const playwright = require('playwright');
 
 (async () => {
 
-    //Code execution happens within here
+    //#region launch browser
     const browser = await playwright["chromium"].launch({
         headless: false
     });
 
-    //context
+    //#endregion
+
+    //#region context, page, get URL
     const context = await browser.newContext();
-
-    //navigate to the page
     const page = await context.newPage();
-
-    //navigate to the page
     await page.goto("https://users.startribune.com/placement/2/environment/2/limit-regfirst-mobile-289/start?offer=289");
 
     await page.waitForResponse(response => {
         return response.request().resourceType() === "xhr"
     })
+    //#endregion
 
-    //enter credentials to login
+    //#region check slides and contents
     await page.type('[id=user_email_address]', 'ajay.khobragade@startribune.com');
     await page.type('[id=user_password]', 'mystrib123');
     await page.type('[id=user_password_confirmation]', 'mystrib123');
@@ -32,11 +31,14 @@ const playwright = require('playwright');
     document.querySelector("#terms_of_use").parentElement.click();});
 
     await page.keyboard.press('Enter', {delay:2000});
+    //#endregion
 
-    //hover
-
+    //#region capture screenshot
     await page.screenshot({path: `ea-${Date.now}.png`});
-    
+    //#endregion
+
+    //#region close browser
     //await browser.close();
+    //#endregion
     
 })();

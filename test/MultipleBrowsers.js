@@ -2,42 +2,44 @@ const playwright = require('playwright');
 
 (async () => {
 
-    //Code execution happens within here
+    //#region launch browser
     for (const browsertype of ['chromium', 'firefox', 'webkit']) {
     const browser = await playwright[browsertype].launch({
         headless: false
     });
+    //#endregion
 
-    //context
+    //#region context, page, get URL
     const context = await browser.newContext();
-
-    //navigate to the page
     const page = await context.newPage();
-
-    //navigate to the page
     await page.goto("https://users.startribune.com/placement/2/environment/2/limit-regfirst-mobile-289/start?offer=289");
 
     await page.waitForResponse(response => {
         return response.request().resourceType() === "xhr"
     })
+    //#endregion
 
-    //enter credentials to login
+    //#region enter credentials to login
     await page.type('[id=user_email_address]', 'ajay.khobragade@startribune.com');
     await page.type('[id=user_password]', 'mystrib123');
     await page.type('[id=user_password_confirmation]', 'mystrib123');
     await page.type('[id=user_zip]', '55374');
-    await page.selectOption('[id=user_birth_year]', '1981');
+    await page.selectOption('[id=user_birth_year]', '1981');  
     
     await page.waitForSelector("#terms_of_use");
     await page.evaluate(() => {
     document.querySelector("#terms_of_use").parentElement.click();});
-
-    await page.keyboard.press('Enter', {delay:2000});
-
-    //hover
-
-    await page.screenshot({path: `ea-${browsertype}.png`});
     
+    await page.keyboard.press('Enter', {delay:2000});
+    //#endregion
+
+    //#region capture screenshot
+    await page.screenshot({path: `ea-${browsertype}.png`});
+    //#endregion
+
+    //#region close browser
     //await browser.close();
+    //#endregion
+
 }  
 })();
