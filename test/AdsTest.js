@@ -3,7 +3,7 @@ const playwright = require('playwright');
 (async () => {
 
     //#region launch browser, context and page
-    for (const browsertype of ['chromium']) {
+    for (const browsertype of ['chromium', 'webkit']) {
         const browser = await playwright[browsertype].launch({
             headless: false,
             devtools: false
@@ -26,19 +26,48 @@ const playwright = require('playwright');
         return response.request().resourceType() === "xhr"
     })
     //#endregion
-
+    
     //#region check Ads location existance
-    /* if (await page.$('#zone-2-block-3-vertical') !== null) console.log('DFP Indirect block-3-vertical Ad is found');
-    else console.log('DFP Indirect block-3-vertical Ad is not found');
 
-    if (await page.$('#zone-1C-block-1-native') !== null) console.log('DFP Indirect block-1-native Ad is found');
-    else console.log('DFP Indirect block-1-native Ad is not found');
+    const APSR = await page.$$eval('#div-gpt-ad-premium-Test67-skinright', divs => $("div#div-gpt-ad-premium-Test67-skinright").children('div').length);
+    console.log(APSR);
+    if (APSR!==1) console.log('APSR AdWrapper empty');
+    else console.log('APSR AdWrapper found');
 
-    if (await page.$('#zone-2-block-4-vertical') !== null) console.log('DFP Indirect block-4-vertical Ad is found');
-    else console.log('DFP Indirect block-4-vertical Ad is not found');
+    const APSL = await page.$$eval('#div-gpt-ad-premium-Test67-skinleft', divs => $("div#div-gpt-ad-premium-Test67-skinleft").children('div').length);
+    console.log(APSL);
+    if (APSL!==1) console.log('APSL AdWrapper empty');
+    else console.log('APSL AdWrapper found');
 
-    if (await page.$('#zone-none-block-2-leaderboard') !== null) console.log('DFP Indirect block-2-leaderboard Ad is found');
-    else console.log('DFP Indirect block-2-leaderboard Ad is not found');
+    const ZNB1L = await page.$$eval('#zone-none-block-1-leaderboard', divs => $("div#zone-none-block-1-leaderboard").children('div').length);
+    console.log(ZNB1L);
+    if (ZNB1L!==1) console.log('ZNB1L AdWrapper empty');
+    else console.log('ZNB1L AdWrapper found');
+
+    const Z2B2V = await page.$$eval('#zone-2-block-2-vertical', divs => $("div#zone-2-block-2-vertical").children('div').length);
+    console.log(Z2B2V);
+    if (Z2B2V!==1) console.log('Z2B2V AdWrapper empty');
+    else console.log('Z2B2V AdWrapper found');
+
+    const Z2B3V = await page.$$eval('#zone-2-block-3-vertical', divs => $("div#zone-2-block-3-vertical").children('div').length);
+    console.log(Z2B3V);
+    if (Z2B3V!==1) console.log('Z2B3V AdWrapper empty');
+    else console.log('Z2B3V AdWrapper found');
+
+    const Z1CB1N = await page.$$eval('#zone-1C-block-1-native', divs => $("div#zone-1C-block-1-native").children('div').length);
+    console.log(Z1CB1N);
+    if (Z1CB1N!==1) console.log('Z1CB1N AdWrapper empty');
+    else console.log('Z1CB1N AdWrapper found');
+
+    const Z2B4V = await page.$$eval('#zone-2-block-4-vertical', divs => $("div#zone-2-block-4-vertical").children('div').length);
+    console.log(Z2B4V);
+    if (Z2B4V!==1) console.log('Z2B4V AdWrapper empty');
+    else console.log('Z2B4V AdWrapper found');
+
+    const ZNB2L = await page.$$eval('#zone-none-block-2-leaderboard', divs => $("div#zone-none-block-2-leaderboard").children('div').length);
+    console.log(ZNB2L);
+    if (ZNB2L!==1) console.log('ZNB2L AdWrapper empty');
+    else console.log('ZNB2L AdWrapper found');
 
     //#region scrollfullpage
     await scrollFullPage(page);
@@ -63,56 +92,37 @@ const playwright = require('playwright');
       }
     //#endregion
 
-    if (await page.$('#zone-3-block-5-square') !== null) console.log('DFP Indirect block-5-square Ad is found');
-    else console.log('DFP Indirect block-5-square Ad is not found');
+    const Z3B5S = await page.$$eval('#zone-3-block-5-square', divs => $("div#zone-3-block-5-square").children('div').length);
+    console.log(Z3B5S);
+    if (Z3B5S!==1) console.log('Z3B5S AdWrapper empty');
+    else console.log('Z3B5S AdWrapper found');
 
-    if (await page.$('#zone-3-block-9-square') !== null) console.log('DFP Indirect block-9-square Ad is found');
-    else console.log('DFP Indirect block-9-square Ad is not found');
+    const Z3B9S = await page.$$eval('#zone-3-block-9-square', divs => $("div#zone-3-block-9-square").children('div').length);
+    console.log(Z3B9S);
+    if (Z3B9S!==1) console.log('Z3B9S AdWrapper empty');
+    else console.log('Z3B9S AdWrapper found');
 
-    if (await page.$('#zone-3-block-13-square') !== null) console.log('DFP Indirect block-13-square Ad is found');
-    else console.log('DFP Indirect block-13-square Ad is not found');
+    const Z3B13S = await page.$$eval('#zone-3-block-13-square', divs => $("div#zone-3-block-13-square").children('div').length);
+    console.log(Z3B13S);
+    if (Z3B13S!==1) console.log('Z3B13S AdWrapper empty');
+    else console.log('Z3B13S AdWrapper found');
 
-    if (await page.$('#zone-3-block-17-square') !== null) console.log('DFP Indirect block-17-square Ad is found');
-    else console.log('DFP Indirect block-17-square Ad is not found');
+    const Z3B17S = await page.$$eval('#zone-3-block-17-square', divs => $("div#zone-3-block-17-square").children('div').length);
+    console.log(Z3B17S);
+    if (Z3B17S!==1) console.log('Z3B17S AdWrapper empty');
+    else console.log('Z3B17S AdWrapper found');
 
-    if (await page.$('#zone-none-block-3-leaderboard') !== null) console.log('DFP Indirect block-3-leaderboard Ad is found');
-    else console.log('DFP Indirect block-3-leaderboard Ad is not found');
+    const ZNB3L = await page.$$eval('#zone-none-block-3-leaderboard', divs => $("div#zone-none-block-3-leaderboard").children('div').length);
+    console.log(ZNB3L);
+    if (ZNB3L!==1) console.log('ZNB3L AdWrapper empty');
+    else console.log('ZNB3L AdWrapper found');
 
-    await scrollFullPage(page); */
-    //#endregion
-    
-    //#region check Ads location existance NEW
-    if (await page.$('div.l-home-top-ad') !== null) console.log('DFP Direct Ad is found');
-    else console.log('DFP Direct Ad is not found');
+    const APH = await page.$$eval('#div-gpt-ad-premium-Test67-hover', divs => $("div#div-gpt-ad-premium-Test67-hover").children('div').length);
+    console.log(APH);
+    if (APH!==1) console.log('APH AdWrapper empty');
+    else console.log('APH AdWrapper found');
 
-    if (await page.$('#zone-2-block-2-vertical', e => e.outerHTML) !== null) console.log('DFP Indirect block-2-vertical Ad is found');
-    else console.log('DFP Indirect block-2-vertical Ad is not found');
-
-    //const contentWrapper = await page.$eval('#zone-2-block-2-vertical', el => el['data-google-query-id']);
-    const contentWrapper = await page.$eval('#zone-2-block-2-vertical', e => e.outerHTML);
-    console.log(contentWrapper);
-    if (contentWrapper==null) console.log('Empty');
-    else console.log('not Empty');
-
-    if (await page.$('#zone-2-block-2-vertical', e => e('data-google-query-id')) !== null) console.log('DFP Indirect block-2-vertical query Ad is found');
-    else console.log('DFP Indirect block-2-vertical query Ad is not found');
-
-    if (await page.$('#zone-none-block-1-leaderboard'), ('data-google-query-id') !== null) console.log('DFP Direct block-1-leaderboard Ad is found');
-    else console.log('DFP Direct block-1-leaderboard Ad is not found');
-
-    //const contentWrapper = await page.$('#zone-2-block-2-vertical');
-    //console.log(contentWrapper.getAttr( "style" ) );
-    //const contentWrapper = await page.$eval('#zone-2-block-2-vertical', el => el.style);
-    //const preloadHref = await page.$eval('#zone-2-block-2-vertical', el => el.href);
-    //const html = await page.$eval('#zone-2-block-2-vertical', (e, suffix) => e.outerHTML + suffix, 'hello');
-    //const contentWrapper = await page.$eval('#zone-2-block-2-vertical', el => e['data-google-query-id']);
-    //const contentWrapper = await page.$$eval('#zone-2-block-2-vertical', divs => divs.length);
-    //const styleAttr = await contentWrapper.getAttribute('style');
-    //const tweetHandle = await page.$('#zone-2-block-2-vertical');
-    //await tweetHandle.evaluate(node => node.innerText).toBe('10');
-    //if (contentWrapper.getAttribute("class") == null || contentWrapper.getAttribute("class") == "") console.log('Empty');
-    //else console.log('Not Empty');
-
+    await scrollFullPage(page);
     //#endregion
 
     //#region capture fullpage screenshot
