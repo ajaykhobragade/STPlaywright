@@ -17,7 +17,7 @@ const playwright = require('playwright');
     //#endregion
 
     //#region navigate to the homepage
-    await page.goto("https://www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?sz=/7932/website/web_test/test67&segment=Grazer");
+    await page.goto("https://www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?sz=/7932/website/web_test/test67&segment=Grazer");
 
     var waitPeriod = 1;
     await page.waitForResponse(response => {
@@ -43,7 +43,7 @@ const playwright = require('playwright');
     console.log(ZNB1L);
     if (ZNB1L!==1) console.log('ZNB1L AdWrapper empty');
     else console.log('ZNB1L AdWrapper found');
-
+    
     const Z2B1V = await page.$$eval('#zone-2-block-1-vertical', divs => $("div#zone-2-block-1-vertical").children('div').length);
     console.log(Z2B1V);
     if (Z2B1V!==1) console.log('Z2B1V AdWrapper empty');
@@ -102,65 +102,10 @@ const playwright = require('playwright');
     if (Z1B17IB!==1) console.log('Z1B17IB AdWrapper empty');
     else console.log('Z1B17IB AdWrapper found');
 
-    const Z2B6F = await page.$$eval('#zone-2-block-6-fill', divs => $("div#zone-2-block-6-fill").children('div').length);
-    console.log(Z2B6F);
-    if (Z2B6F!==1) console.log('Z2B6F AdWrapper empty');
-    else console.log('Z2B6F AdWrapper found');
-
-    const Z2B7F = await page.$$eval('#zone-2-block-7-fill', divs => $("div#zone-2-block-7-fill").children('div').length);
-    console.log(Z2B7F);
-    if (Z2B7F!==1) console.log('Z2B7F AdWrapper empty');
-    else console.log('Z2B7F AdWrapper found');
-
-    const Z1B22IB = await page.$$eval('#zone-1-block-22-inline-body', divs => $("div#zone-1-block-22-inline-body").children('div').length);
-    console.log(Z1B22IB);
-    if (Z1B22IB!==1) console.log('Z1B22IB AdWrapper empty');
-    else console.log('Z1B22IB AdWrapper found');
-    
-    const Z2B8F = await page.$$eval('#zone-2-block-8-fill', divs => $("div#zone-2-block-8-fill").children('div').length);
-    console.log(Z2B8F);
-    if (Z2B8F!==1) console.log('Z2B8F AdWrapper empty');
-    else console.log('Z2B8F AdWrapper found');
-
-    const Z2B9F = await page.$$eval('#zone-2-block-9-fill', divs => $("div#zone-2-block-9-fill").children('div').length);
-    console.log(Z2B9F);
-    if (Z2B9F!==1) console.log('Z2B9F AdWrapper empty');
-    else console.log('Z2B9F AdWrapper found');
-
-    const Z1B27IB = await page.$$eval('#zone-1-block-27-inline-body', divs => $("div#zone-1-block-27-inline-body").children('div').length);
-    console.log(Z1B27IB);
-    if (Z1B27IB!==1) console.log('Z1B27IB AdWrapper empty');
-    else console.log('Z1B27IB AdWrapper found');
-    
-    const Z1B32IB = await page.$$eval('#zone-1-block-32-inline-body', divs => $("div#zone-1-block-32-inline-body").children('div').length);
-    console.log(Z1B32IB);
-    if (Z1B32IB!==1) console.log('Z1B32IB AdWrapper empty');
-    else console.log('Z1B32IB AdWrapper found');
-
-    const Z1B37IB = await page.$$eval('#zone-1-block-37-inline-body', divs => $("div#zone-1-block-37-inline-body").children('div').length);
-    console.log(Z1B37IB);
-    if (Z1B37IB!==1) console.log('Z1B37IB AdWrapper empty');
-    else console.log('Z1B37IB AdWrapper found');
-
-    const Z1B42IB = await page.$$eval('#zone-1-block-42-inline-body', divs => $("div#zone-1-block-42-inline-body").children('div').length);
-    console.log(Z1B42IB);
-    if (Z1B42IB!==1) console.log('Z1B42IB AdWrapper empty');
-    else console.log('Z1B42IB AdWrapper found');
-
-    const Z1B47IB = await page.$$eval('#zone-1-block-47-inline-body', divs => $("div#zone-1-block-47-inline-body").children('div').length);
-    console.log(Z1B47IB);
-    if (Z1B47IB!==1) console.log('Z1B47IB AdWrapper empty');
-    else console.log('Z1B47IB AdWrapper found');
-
     const ZNB2L = await page.$$eval('#zone-none-block-2-leaderboard', divs => $("div#zone-none-block-2-leaderboard").children('div').length);
     console.log(ZNB2L);
     if (ZNB2L!==1) console.log('ZNB2L AdWrapper empty');
     else console.log('ZNB2L AdWrapper found');
-
-    const ZNB3L = await page.$$eval('#zone-none-block-3-leaderboard', divs => $("div#zone-none-block-3-leaderboard").children('div').length);
-    console.log(ZNB3L);
-    if (ZNB3L!==1) console.log('ZNB3L AdWrapper empty');
-    else console.log('ZNB3L AdWrapper found');
 
     const Z3B5S = await page.$$eval('#zone-3-block-5-square', divs => $("div#zone-3-block-5-square").children('div').length);
     console.log(Z3B5S);
@@ -177,6 +122,11 @@ const playwright = require('playwright');
     if (Z3B15S!==1) console.log('Z3B15S AdWrapper empty');
     else console.log('Z3B15S AdWrapper found');
 
+    const ZNB3L = await page.$$eval('#zone-none-block-3-leaderboard', divs => $("div#zone-none-block-3-leaderboard").children('div').length);
+    console.log(ZNB3L);
+    if (ZNB3L!==1) console.log('ZNB3L AdWrapper empty');
+    else console.log('ZNB3L AdWrapper found');
+
     const APH = await page.$$eval('#div-gpt-ad-premium-Test67-hover', divs => $("div#div-gpt-ad-premium-Test67-hover").children('div').length);
     console.log(APH);
     if (APH!==1) console.log('APH AdWrapper empty');
@@ -187,7 +137,7 @@ const playwright = require('playwright');
 
     //#region capture fullpage screenshot
     await page.screenshot({ 
-        path: 'startribune_ArticleGrazer.png',
+        path: 'startribune_ArticleGrazer2.png',
         fullPage : true });
     //#endregion
 
