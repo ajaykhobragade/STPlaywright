@@ -23,18 +23,16 @@ const playwright = require('playwright');
 
     const Subscribe = await page.$$eval('.c0113 c017', buttons => $("button.c0113 c017").console);
     console.log(Subscribe);
-    //await page.$eval('#mobileButton > button', (el) => el.click());
+    await page.$eval('#mobileButton > button', (el) => el.click());
 
-    await page.$('.ReactModal__Content ReactModal__Content--after-open c019 c0111 c011 c018').hasScrollBar();
+
+    /* await page.$('.ReactModal__Content ReactModal__Content--after-open c019 c0111 c011 c018').hasScrollBar();
 
     (function($) {
         $.fn.hasScrollBar = function() {
             return this.get(0).scrollHeight > this.height();
         }
-    })(jQuery);
-
-    
-
+    })(jQuery); */
 
     //const facebook = await page.$('.c0113 c017', element => element.textContent);
     //const Subscribe = await page.$('.c0113 c017', e => e.InnerHTML);
@@ -108,7 +106,9 @@ const playwright = require('playwright');
     //#endregion
 
     //#region capture screenshot
-    await page.screenshot({path: `ea-${browsertype}.png`});
+    await page.screenshot({ 
+        path: 'ADV-149.png',
+        fullPage : true });
     //#endregion
 
     //#region close browser

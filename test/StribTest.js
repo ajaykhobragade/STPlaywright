@@ -34,7 +34,9 @@ const playwright = require('playwright');
     //#endregion
 
     //#region capture screenshot
-    await page.screenshot({path: `ea-${Date.now}.png`});
+    await page.screenshot({ 
+        path: 'StribTest.png',
+        fullPage : true });
     //#endregion
 
     //#region close browser
