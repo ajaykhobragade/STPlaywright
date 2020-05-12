@@ -3,7 +3,7 @@ const playwright = require('playwright');
 (async () => {
 
     //#region launch browser
-    const browser = await playwright["chromium"].launch({
+    const browser = await playwright["chromium", "webkit"].launch({
         headless: false
     });
 
@@ -58,6 +58,37 @@ const playwright = require('playwright');
 
     await page.keyboard.press('Enter', {delay:4000});
     //#endregion
+
+    //#region create new login
+    await page.click('#slide-1');
+    await page.type('[id=user_email_address]', 'ajay.khobragade@startribune.com');
+    await page.type('[id=user_password]', 'strib123');
+    await page.type('[id=user_password_confirmation]', 'strib123');
+    await page.type('[id=user_zip]', '55374');
+    await page.selectOption('#user_birth_year', '1981');
+
+    await page.waitForSelector("#terms_of_use");
+    await page.evaluate(() => {
+    document.querySelector("#terms_of_use").parentElement.click();});
+
+    await page.keyboard.press('Enter', {delay:4000});
+    //#endregion
+
+     //#region login in
+    await page.click('#slide-2');
+    await page.type('[id=login_email_address]', 'ajay.khobragade@startribune.com');
+    await page.type('[id=login_password]', 'india12345');
+    await page.keyboard.press('Enter', {delay:8000});
+     //#endregion
+
+     //#region thanks and continue
+    const clickText = text => {
+        return page.evaluate(text => [...document.querySelectorAll('*')].find(e => e.textContent.trim() === text).click(), text);
+    };
+    await clickText('Continue');
+    //await page({delay:4000});
+
+     //#endregion
 
     //#region capture screenshot
     await page.screenshot({ 

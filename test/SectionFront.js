@@ -18,6 +18,7 @@ const playwright = require('playwright');
 
     //#region navigate to the homepage
     await page.goto("https://www.startribune.com/local/?sz=/7932/website/web_test/test67");
+    console.log(page.url());
 
     var waitPeriod = 1;
     await page.waitForResponse(response => {
