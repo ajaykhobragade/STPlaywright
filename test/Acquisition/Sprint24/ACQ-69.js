@@ -3,7 +3,7 @@ const playwright = require('playwright');
 (async () => {
 
     //#region launch browser
-    for (const browsertype of ['firefox', 'webkit']) {
+    for (const browsertype of ['chromium', 'firefox', 'webkit']) {
     const browser = await playwright[browsertype].launch({
         headless: false,
     
@@ -13,7 +13,10 @@ const playwright = require('playwright');
     //#region context, page, get URL
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/");
+    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/?featureOff=Bounce-X", {
+        waitUntil: 'load',
+        timeout: 0
+      });
 
     await page.waitForResponse(response => {
         return response.request().resourceType() === "xhr"

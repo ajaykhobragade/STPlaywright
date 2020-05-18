@@ -20,7 +20,10 @@ const iPhone11 = devices['iPhone 11 Pro'];
         permissions: ['geolocation']
     });
     const page = await context.newPage();
-    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/");
+    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/?featureOff=Bounce-X", {
+        waitUntil: 'load',
+        timeout: 0
+      });
 
     await page.waitForResponse(response => {
         return response.request().resourceType() === "xhr"

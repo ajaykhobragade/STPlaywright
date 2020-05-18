@@ -19,7 +19,10 @@ const iPhone11 = devices['iPhone 11 Pro'];
         permissions: ['geolocation']
     });
     const page = await context.newPage();
-    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/");
+    await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/?featureOff=Bounce-X", {
+        waitUntil: 'load',
+        timeout: 0
+      });
 
     await page.waitForResponse(response => {
         return response.request().resourceType() === "xhr"
@@ -41,6 +44,26 @@ const iPhone11 = devices['iPhone 11 Pro'];
     await page.type('//*[@id="subscriber_email_address"]', 'ajay.khobragade@startribune.com');
     await page.type('//*[@id="subscriber_phone_number"]', '215-622-4903');
     await page.keyboard.press('Enter', {delay:2000});
+    //#endregion
+
+    //#region fill up payment information
+    await page.waitForSelector("#billing_address_same");
+    await page.evaluate(() => {
+    document.querySelector("#billing_address_same").parentElement.click();});
+
+    const card = {
+        number: '5147305085176291'
+    }
+    await page.waitForSelector('//*[@id="ccjs-number-formatted"]');
+    await page.click('//*[@id="ccjs-number-formatted"]');
+    await page.waitForSelector('//*[@id="ccjs-number-formatted"]');
+    await page.click('//*[@id="ccjs-number-formatted"]');
+    await page.keyboard.type(card.number, { delay: 50 });
+        
+    await page.type('//*[@id="ccjs-name"]', 'Ajay Khobragade');
+    await page.selectOption('.ccjs-month', '01');
+    await page.selectOption('.ccjs-year', '22');
+    //await page.keyboard.press('Enter', {delay:2000});
     //#endregion
 
     //#region capture screenshot
