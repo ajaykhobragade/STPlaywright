@@ -3,8 +3,13 @@ const playwright = require('playwright');
 (async () => {
 
   //#region launch browser, context and page
-  const urls = ['https://www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X', 
-  'https://stage-www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X']
+  //test pages
+  /* const urls = ['https://www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X', 
+  'https://stage-www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X'] */
+
+  //real life pages
+  const urls = ['https://www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?featureOff=Bounce-X', 
+  'https://stage-www.startribune.com/coronavirus-covid-19-minnesota-tracker-map-county-data/568712601/?featureOff=Bounce-X']
   
   for (let i = 0; i < urls.length; i++) {
 

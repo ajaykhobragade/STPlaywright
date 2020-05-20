@@ -3,9 +3,14 @@ const playwright = require('playwright');
 (async () => {
 
   //#region launch browser, context and page
-  const urls = ['https://www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X', 
-  'https://stage-www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X']
+  //test pages
+  /* const urls = ['https://www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X', 
+  'https://stage-www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?sz=/7932/website/web_test/test67&segment=Grazer/&featureOff=Bounce-X'] */
   
+  //real life pages
+  const urls = ['https://www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?featureOff=Bounce-X', 
+  'https://stage-www.startribune.com/trump-lashes-out-at-fauci-amid-criticism-of-slow-virus-response/569585832/?featureOff=Bounce-X']
+
   for (let i = 0; i < urls.length; i++) {
 
       const url = urls[i];
