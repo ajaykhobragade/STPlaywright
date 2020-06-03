@@ -1,11 +1,9 @@
 const playwright = require('playwright');
-const { chromium, webkit, devices } = require('playwright');
-const iPhone11 = devices['iPhone 11 Pro'];
 
 (async () => {
 
     //#region launch browser
-    for (const browsertype of ['chromium', 'webkit']) {
+    for (const browsertype of ['chromium', 'firefox', 'webkit']) {
     const browser = await playwright[browsertype].launch({
         headless: false,
     
@@ -13,11 +11,7 @@ const iPhone11 = devices['iPhone 11 Pro'];
     //#endregion
 
     //#region context, page, get URL
-    const context = await browser.newContext({
-        ...iPhone11,
-        geolocation: { longitude: 12.492507, latitude: 41.889938 },
-        permissions: ['geolocation']
-    });
+    const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://stage-www.startribune.com/singing-the-concert-cancellation-blues-get-your-live-music-fix-with-these-25-films/569088652/?featureOff=Bounce-X", {
         waitUntil: 'load',
@@ -30,7 +24,7 @@ const iPhone11 = devices['iPhone 11 Pro'];
     //#endregion
     
     //#region click on subscription button
-    await page.$eval('//*[@id="mobileButton"]/a[1]', (el) => el.click()); //button click works for webkit, not chromium
+    await page.$eval('//*[@id="mobileButton"]/a[1]', (el) => el.click()); //button click works for webkit & firefox, but not chromium
 
     //#endregion
 
@@ -47,13 +41,13 @@ const iPhone11 = devices['iPhone 11 Pro'];
     //#endregion
 
     //#region fill up payment information
-    /* await page.waitForSelector("#billing_address_same");
+    await page.waitForSelector("#billing_address_same");
     await page.evaluate(() => {
     document.querySelector("#billing_address_same").parentElement.click();});
 
     const card = {
         number: '5147305085176291'
-    }
+      }
     await page.waitForSelector('//*[@id="ccjs-number-formatted"]');
     await page.click('//*[@id="ccjs-number-formatted"]');
     await page.waitForSelector('//*[@id="ccjs-number-formatted"]');
@@ -62,13 +56,13 @@ const iPhone11 = devices['iPhone 11 Pro'];
         
     await page.type('//*[@id="ccjs-name"]', 'Ajay Khobragade');
     await page.selectOption('.ccjs-month', '01');
-    await page.selectOption('.ccjs-year', '22'); */
+    await page.selectOption('.ccjs-year', '22');
     //await page.keyboard.press('Enter', {delay:2000});
     //#endregion
 
     //#region capture screenshot
     await page.screenshot({ 
-        path: 'ACQ-149_Mobile.png',
+        path: 'ACQ-149.png',
         fullPage : true });
     //#endregion
 
