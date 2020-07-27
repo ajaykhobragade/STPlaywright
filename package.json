@@ -1,20 +1,26 @@
 {
     "devDependencies": {
-        "expect-playwright": "^0.2.4",
+        "eslint-plugin-jest-playwright": "^0.2.1",
+        "expect-playwright": "^0.2.5",
         "jest": "^26.0.1",
+        "jest-circus": "^26.1.0",
         "jest-playwright-preset": "^0.2.3",
-        "playwright": "^1.0.2",
+        "playwright": "^1.2.1",
         "playwright-chromium": "^1.0.2",
         "playwright-firefox": "^1.0.2",
         "playwright-webkit": "^1.0.2"
     },
     "jest": {
-        "preset": "jest-playwright-preset"
+        "preset": "jest-playwright-preset",
+        "setupFilesAfterEnv": [
+            "expect-playwright"
+        ]
     },
     "scripts": {
         "test": "jest"
     },
     "dependencies": {
-        "query-selector-shadow-dom": "^0.5.0"
+        "query-selector-shadow-dom": "^0.5.0",
+        "url": "^0.11.0"
     }
 }

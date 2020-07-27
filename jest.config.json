@@ -1,0 +1,3 @@
+{"testRunner": "jest-circus/runner",
+"testEnvironment": "./CustomEnvironment.js",
+"setupFilesAfterEnv": ["expect-playwright"]}

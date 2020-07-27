@@ -21,10 +21,6 @@ module.exports = {
 }
 
 module.exports = {
-    "setupFilesAfterEnv": ["expect-playwright"]
-}
-
-module.exports = {
   serverOptions: {
     command: 'node server.js',
     port: 4444,
@@ -33,4 +29,11 @@ module.exports = {
 
 collectCoverage = true
 
-
+{
+  "extends"; [
+      "plugin:jest-playwright/recommended"
+  ]
+}
+module.exports = {
+  preset: 'jest-playwright-preset',
+}
