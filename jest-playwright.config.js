@@ -20,23 +20,6 @@ module.exports = {
     devices: ["iPhone 11 Pro", "Pixel 2"],
 }
 
-module.exports = {
-  serverOptions: {
-    command: "npm start",
-    port: 3000,
-    launchTimeout: 10000,
-    debug: true,
-    options: {
-      env: {
-        E2E_TESTS: "true"
-      }
-      }
-  },
-  collectCoverage: true
-}
-
-
-
 {
   "extends"; [
       "plugin:jest-playwright/recommended"
