@@ -1,3 +1,4 @@
 {"testRunner": "jest-circus/runner",
 "testEnvironment": "./CustomEnvironment.js",
-"setupFilesAfterEnv": ["expect-playwright"]}
+"setupFilesAfterEnv": ["expect-playwright"],
+"collectCoverage": true}
